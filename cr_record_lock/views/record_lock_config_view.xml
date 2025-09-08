@@ -1,0 +1,61 @@
+<odoo>
+    <!-- List View -->
+    <record id="view_record_lock_config_tree" model="ir.ui.view">
+        <field name="name">record.lock.config.view.tree</field>
+        <field name="model">record.lock.config</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="lock_start"/>
+                <field name="lock_end"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_record_lock_config_form" model="ir.ui.view">
+        <field name="name">record.lock.config.view.form</field>
+        <field name="model">record.lock.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_lock" string="Lock Records" class="oe_highlight" type="object"/>
+                </header>
+                <sheet>
+                    <div>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="model_id"/>
+                        <field name="lock_start"/>
+                        <field name="lock_end"/>
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="view_record_lock_config_action" model="ir.actions.act_window">
+        <field name="name">Stock Map</field>
+        <field name="res_model">record.lock.config</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_record_lock_root"
+              name="Record Lock"
+              parent="base.menu_custom"
+              sequence="30"/>
+
+    <menuitem id="menu_record_lock"
+              name="Record Lock"
+              parent="menu_record_lock_root"
+              action="view_record_lock_config_action"
+              sequence="30"/>
+</odoo>
