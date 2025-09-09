@@ -22,6 +22,7 @@
             <form>
                 <header>
                     <button name="action_lock" string="Lock Records" class="oe_highlight" type="object"/>
+                    <button name="action_unlock" string="Unlock Records" class="oe_highlight" type="object"/>
                 </header>
                 <sheet>
                     <div>
@@ -47,10 +48,36 @@
         <field name="view_mode">list,form</field>
     </record>
 
+<!--    &lt;!&ndash; Lock Sale Orders Action &ndash;&gt;-->
+<!--    <record id="action_lock_sale_order" model="ir.actions.server">-->
+<!--        <field name="name">Lock Record</field>-->
+<!--        <field name="model_id" ref="sale.model_sale_order"/>-->
+<!--        <field name="binding_model_id" ref="sale.model_sale_order"/>-->
+<!--        <field name="state">code</field>-->
+<!--        <field name="code">-->
+<!--            env['sale.order'].browse(env.context.get('active_ids')).action_lock_manual()-->
+<!--        </field>-->
+<!--        <field name="groups_id" eval="[(4, ref('cr_record_lock.group_standard'))]"/>-->
+<!--    </record>-->
+
+
+<!--    &lt;!&ndash; Unlock Record Action &ndash;&gt;-->
+<!--    <record id="action_unlock_record" model="ir.actions.server">-->
+<!--        <field name="name">Unlock Record</field>-->
+<!--        <field name="model_id" ref="sale.model_sale_order"/>-->
+<!--        <field name="binding_model_id" ref="sale.model_sale_order"/>-->
+<!--        <field name="state">code</field>-->
+<!--        <field name="code">-->
+<!--            unlock_record = env['record.lock.config'].browse(env.context.get('active_ids')).action_unlock_specific()-->
+<!--        </field>-->
+<!--        <field name="groups_id" eval="[(4, ref('cr_record_lock.group_standard'))]"/>-->
+<!--    </record>-->
+
     <!-- Menu -->
     <menuitem id="menu_record_lock_root"
               name="Record Lock"
               parent="base.menu_custom"
+              groups="cr_record_lock.group_standard"
               sequence="30"/>
 
     <menuitem id="menu_record_lock"

@@ -11,10 +11,12 @@
     "version": "18.0.0.0",
     "description": """ 
         """,
-    "depends": ["base"],
+    "depends": ["base", "sale_management"],
     "data": [
         "security/ir.model.access.csv",
+        "security/security.xml",
         "data/ir_sequence_data.xml",
+        "data/ir_cron_record_lock.xml",
         "views/record_lock_config_view.xml",
     ],
     "installable": True,
