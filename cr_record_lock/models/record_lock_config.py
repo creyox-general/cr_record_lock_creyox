@@ -127,9 +127,3 @@ class RecordLockConfig(models.Model):
             elif now > rec.lock_end:
                 if hasattr(target_model, "_original_write"):
                     rec.action_unlock()
-
-    def action_lock_specific(self):
-        print("================= action_lock_specific")
-
-    def action_unlock_specific(self):
-        print("================= action_unlock_specific")
